@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Store | Cuddalore Connect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --border: #e2e8f0;
+            --primary: #2563eb; 
+            --accent: #0f172a;  
+            --text: #1e293b;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: var(--primary);
+            color: white;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .menu-btn {
+            position: absolute;
+            left: 15px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* Sidebar & Overlay */
+        .sidebar { width: 260px; background: white; position: fixed; top: 0; bottom: 0; left: -270px; padding-top: 80px; border-right: 1px solid var(--border); transition: 0.4s; z-index: 150; }
+        .sidebar.open { left: 0; }
+        .sidebar a { display: block; padding: 15px 25px; text-decoration: none; color: var(--text); font-weight: 500; border-bottom: 1px solid #f1f5f9; }
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: none; z-index: 120; }
+        .overlay.show { display: block; }
+
+        .main { padding: 85px 15px 100px; max-width: 600px; margin: 0 auto; }
+
+        /* Search Bar */
+        .search-container {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            background: white;
+            font-family: inherit;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            outline: none;
+            box-sizing: border-box;
+        }
+        .search-icon {
+            position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+            font-size: 18px; color: #94a3b8;
+        }
+
+        .section-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;
+        }
+        .section-title { font-size: 17px; font-weight: 700; color: var(--accent); }
+
+        /* Grid Layout */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        /* Cards */
+        .app-card { display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; transition: 0.3s; }
+        /* தேடலில் கிடைக்காத கார்டுகளை மறைக்க */
+        .app-card.hidden { display: none; }
+
+        .app-icon {
+            width: 100%; aspect-ratio: 1/1; border-radius: 22px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 35px; font-weight: 600; color: white; margin-bottom: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .app-card:active .app-icon { transform: scale(0.92); }
+        .app-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+        .app-info { font-size: 10px; color: #94a3b8; margin-bottom: 8px; }
+
+        .open-btn {
+            background:var(--primary);
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700; padding: 6px 0; width: 100%;
+            border-radius: 20px; text-align: center;
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            height: 65px; position: fixed; bottom: 0; left: 0; right: 0;
+            display: flex; justify-content: space-around; align-items: center;
+            background: white; border-top: 1px solid var(--border); z-index: 100;
+        }
+        .nav-btn {
+            background: none; border: none; font-size: 11px; font-weight: 600;
+            color: #94a3b8; display: flex; flex-direction: column; align-items: center; flex: 1;
+        }
+        .nav-btn.active { color: var(--primary); }
+        .nav-btn span { font-size: 22px; margin-bottom: 2px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    Website 
+</header>
+
+
+<div id="sidebar" class="sidebar">
+    <a href="index.html">🏠 Home</a>
+
+    <a href="places.html">🏖️ Places</a>
+
+    <a href="contact.html">📞 Contact</a> <a href="web.html" style="color: var(--primary);">🌐 Websites</a> 
+
+        <a href="emergency.html">🚑 Emergency</a>
+        
+            <a href="contact us.html">💌 Contact Us</a>
+              <a href="disclaimer.html">⚠️ Disclaimer</a>
+              <a href="privacy policy.html">🔒 Privacy Policy</a>
+     <a href="about.html">ℹ️ About Us</a>
+    
+        
+      
+</div>
+
+<div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+<div class="main">
+    
+    <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-bar" placeholder="Search for websites..." onkeyup="filterWebsites()">
+    </div>
+
+    <div class="section-header">
+        <div class="section-title">All Websites</div>
+    </div>
+
+    <div class="app-grid" id="websiteGrid">
+        
+        <div class="app-card" onclick="window.open('https://cuddalore.nic.in/', '_blank')">
+            <div class="app-icon" style="background: #fbbf24;">C</div> 
+            <div class="app-name">Cuddalore GH</div>
+            <div class="app-info">Govt</div>
+            <div class="open-btn">Open</div>
+        </div>
+        
+        <div class="app-card">
+            <div class="app-icon" style="background: #22d3ee;">L</div> 
+            <div class="app-name">Local Textiles</div>
+            <div class="app-info">Shopping</div>
+            <div class="open-btn">Open</div>
+        </div>
+        
+        <div class="app-card" onclick="window.open('http://pacc.in/', '_blank')">
+            <div class="app-icon" style="background: #f87171;">P</div> 
+            <div class="app-name">Periyar Arts</div>
+            <div class="app-info">College</div>
+            <div class="open-btn">Open</div>
+        </div>
+        
+        <div class="app-card">
+            <div class="app-icon" style="background: #ec4899;">S</div> 
+            <div class="app-name">SIPCOT Info</div>
+            <div class="app-info">Industry</div>
+            <div class="open-btn">Open</div>
+        </div>
+        
+        <div class="app-card">
+            <div class="app-icon" style="background: #fb923c;">M</div> 
+            <div class="app-name">Market Yard</div>
+            <div class="app-info">Prices</div>
+            <div class="open-btn">Open</div>
+        </div>
+        
+        <div class="app-card">
+            <div class="app-icon" style="background: #3b82f6;">E</div> 
+            <div class="app-name">Edu Connect</div>
+            <div class="app-info">Study</div>
+            <div class="open-btn">Open</div>
+        </div>
+        
+          <div class="app-card">
+            <div class="app-icon" style="background: #3b82f6;">E</div> 
+            <div class="app-name">Edu Connect</div>
+            <div class="app-info">Study</div>
+            <div class="open-btn">Open</div>
+        </div>
+        
+        
+         <div class="app-card" onclick="window.open('https://cuddalore.nic.in/', '_blank')">
+            <div class="app-icon" style="background: #fbbf24;">C</div> 
+            <div class="app-name">Cuddalore GH</div>
+            <div class="app-info">Govt</div>
+            <div class="open-btn">Open</div>
+        </div>
+        
+        
+        
+         <div class="app-card" onclick="window.open('https://cuddalore.nic.in/', '_blank')">
+            <div class="app-icon" style="background: #fbbf24;">C</div> 
+            <div class="app-name">Cuddalore GH</div>
+            <div class="app-info">Govt</div>
+            <div class="open-btn">Open</div>
+        </div>
+        
+         <div class="app-card" onclick="window.open('https://cuddalore.nic.in/', '_blank')">
+            <div class="app-icon" style="background: #fbbf24;">C</div> 
+            <div class="app-name">Cuddalore GH</div>
+            <div class="app-info">Govt</div>
+            <div class="open-btn">Open</div>
+        </div>
+        
+         <div class="app-card" onclick="window.open('https://cuddalore.nic.in/', '_blank')">
+            <div class="app-icon" style="background: #fbbf24;">C</div> 
+            <div class="app-name">Cuddalore GH</div>
+            <div class="app-info">Govt</div>
+            <div class="open-btn">Open</div>
+        </div>
+        
+        
+        
+        
+    </div>
+    
+    
+</div>
+
+<div class="bottom-nav">
+    <div class="nav-btn" onclick="location.href='index.html'"><span>🏠</span>Home</div>
+    <div class="nav-btn" onclick="location.href='contact.html'"><span>📞</span>Contact</div>
+    <div class="nav-btn" onclick="location.href='places.html'"><span>🏖️</span>Places</div>
+    <div class="nav-btn active" onclick="locweb.htmlef='web.html'"><span>🌐</span>Websites</div>
+</div>
+
+<script>
+    // Sidebar Toggle
+    function toggleMenu() {
+        document.getElementById("sidebar").classList.toggle("open");
+        document.getElementById("overlay").classList.toggle("show");
+    }
+
+    // Search Filtering Function
+    function filterWebsites() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('app-card');
+
+        for (let i = 0; i < cards.length; i++) {
+            let name = cards[i].querySelector('.app-name').innerText.toLowerCase();
+            // பெயர் பொருந்தி வந்தால் காண்பி, இல்லையென்றால் மறை
+            if (name.includes(input)) {
+                cards[i].classList.remove('hidden');
+            } else {
+                cards[i].classList.add('hidden');
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

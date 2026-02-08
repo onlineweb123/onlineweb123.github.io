@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Cuddalore Connect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f0f4f8;
+            --card: #ffffff;
+            --border: #dbeafe;
+            --primary: #2563eb; 
+            --accent: #0f172a;  
+            --text: #1e293b;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: var(--primary);
+            color: white;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .menu-btn {
+            position: absolute;
+            left: 15px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: white;
+            position: fixed;
+            top: 0; bottom: 0; left: -270px;
+            padding-top: 80px;
+            border-right: 1px solid var(--border);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 150;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.05);
+        }
+
+        .sidebar.open { left: 0; }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .sidebar a:hover {
+            background: #eff6ff;
+            color: var(--primary);
+            padding-left: 35px;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: none;
+            backdrop-filter: blur(4px);
+            z-index: 120;
+        }
+
+        .overlay.show { display: block; }
+
+        /* Main Content */
+        .main {
+            padding: 85px 18px 100px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-card {
+            background: var(--card);
+            border-radius: 18px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        h2 { color: var(--primary); font-size: 22px; margin-top: 0; }
+        h3 { color: var(--accent); font-size: 18px; margin-top: 20px; }
+        p { font-size: 14px; color: #475569; margin-bottom: 15px; }
+
+        .highlight {
+            background: #eff6ff;
+            padding: 15px;
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            height: 65px;
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: white;
+            border-top: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            font-size: 11px;
+            font-weight: 600;
+            color: #94a3b8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            flex: 1;
+            text-decoration: none;
+        }
+
+        .nav-btn.active { color: var(--primary); }
+        .nav-btn span { font-size: 22px; margin-bottom: 2px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    About Us
+</header>
+
+<div id="sidebar" class="sidebar">
+    <a href="index.html">🏠 Home</a>
+
+    <a href="places.html">🏖️ Places</a>
+
+    <a href="contact.html">📞 Contact</a> <a href="web.html">🌐 Websites</a> 
+
+        <a href="emergency.html">🚑 Emergency</a>
+        
+            <a href="contact us.html">💌 Contact Us</a>
+              <a href="disclaimer.html">⚠️ Disclaimer</a>
+              <a href="privacy policy.html">🔒 Privacy Policy</a>
+     <a href="about.html" style="color: var(--primary);">ℹ️ About Us</a>
+    
+        
+      
+</div>   
+</div>
+
+<div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+<div class="main">
+    <div class="about-card">
+        <h2>About Us</h2>
+        <p>Welcome to <b>Cuddalore Connect</b>, a dedicated service directory platform created specifically for the people of Cuddalore district.</p>
+        
+        <div class="highlight">
+            <b>Our Mission:</b><br>
+            Our primary goal is to provide easy digital access to essential everyday services for residents living in Cuddalore and surrounding areas.
+        </div>
+
+        <h3>Why We Started?</h3>
+        <p>Finding a reliable plumber, electrician, or technician at the right time can often be a challenge. Understanding this need, we built this platform to connect local service providers directly with the public.</p>
+
+        <h3>What We Offer:</h3>
+        <p>• 24/7 Emergency contact numbers.<br>
+           • Details of verified local service providers.<br>
+           • Information on local tourist spots and cinema theaters.</p>
+
+        <p>Our platform is completely free to use. We do not act as an intermediary and we do not charge any commission or fees from our users or service providers.</p>
+    </div>
+</div>
+
+<div class="bottom-nav">
+    <a href="index.html" class="nav-btn"><span>🏠</span>Home</a>
+    <a href="contact.html" class="nav-btn"><span>📞</span>Contact</a>
+        <div class="nav-btn" onclick="location.href='places.html'"><span>🏖️</span>Places</div>
+    <a href="web.html" class="nav-btn"><span>🌐</span>Website</a>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("sidebar").classList.toggle("open");
+        document.getElementById("overlay").classList.toggle("show");
+    }
+</script>
+
+</body>
+</html>

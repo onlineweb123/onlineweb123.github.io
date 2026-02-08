@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plumber List | Cuddalore Connect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f0f4f8;
+            --card: #ffffff;
+            --border: #dbeafe;
+            --primary: #2563eb; 
+            --accent: #0f172a;  
+            --text: #1e293b;
+            --success: #22c55e;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            font-size: 19px;
+            font-weight: 700;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: var(--primary);
+            color: white;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-left { display: flex; align-items: center; gap: 10px; }
+
+        .menu-btn, .back-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Sidebar & Overlay */
+        .sidebar {
+            width: 260px; background: white; position: fixed;
+            top: 0; bottom: 0; left: -270px; padding-top: 80px;
+            border-right: 1px solid var(--border); transition: 0.4s;
+            z-index: 150; box-shadow: 5px 0 15px rgba(0,0,0,0.05);
+        }
+        .sidebar.open { left: 0; }
+        .sidebar a {
+            display: flex; align-items: center; padding: 15px 25px;
+            text-decoration: none; color: var(--text); font-weight: 500;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+            display: none; backdrop-filter: blur(4px); z-index: 120;
+        }
+        .overlay.show { display: block; }
+
+        /* Main Content */
+        .main {
+            padding: 85px 18px 100px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Category Info */
+        .category-header {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid var(--border);
+        }
+        .category-icon {
+            font-size: 28px;
+            background: #eff6ff;
+            width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 12px;
+        }
+
+        /* Worker Card */
+        .worker-card {
+            background: var(--card);
+            border-radius: 18px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+        .worker-info { display: flex; flex-direction: column; gap: 4px; }
+        .worker-name { font-weight: 700; font-size: 16px; color: var(--accent); }
+        .worker-location { font-size: 13px; color: #64748b; }
+        .experience {
+            font-size: 11px; background: #f1f5f9; color: var(--primary);
+            padding: 2px 8px; border-radius: 6px; font-weight: 600; width: fit-content;
+        }
+
+        .call-btn {
+            width: 45px; height: 45px;
+            background: var(--success); color: white;
+            border-radius: 12px; display: flex;
+            align-items: center; justify-content: center;
+            text-decoration: none; font-size: 20px;
+            box-shadow: 0 4px 10px rgba(34, 197, 94, 0.2);
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            height: 65px; position: fixed; bottom: 0; left: 0; right: 0;
+            display: flex; justify-content: space-around; align-items: center;
+            background: white; border-top: 1px solid var(--border); z-index: 100;
+        }
+        .nav-btn {
+            background: none; border: none; font-size: 11px;
+            font-weight: 600; color: #94a3b8; display: flex;
+            flex-direction: column; align-items: center; flex: 1; cursor: pointer;
+        }
+        .nav-btn.active { color: var(--primary); }
+        .nav-btn span { font-size: 22px; margin-bottom: 2px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+    <span>Plumber List </span>
+    <div style="width: 35px;"></div> 
+</header>
+
+<div id="sidebar" class="sidebar">
+    <a href="index.html">🏠 Home</a>
+
+    <a href="places.html">🏖️ Places</a>
+
+    <a href="contact.html">📞 Contact</a> <a href="web.html">🌐 Websites</a> 
+
+        <a href="emergency.html">🚑 Emergency</a>
+        
+            <a href="contact us.html">💌 Contact Us</a>
+              <a href="disclaimer.html">⚠️ Disclaimer</a>
+              <a href="privacy policy.html">🔒 Privacy Policy</a>
+     <a href="about.html">ℹ️ About Us</a>
+    
+        
+      
+</div>
+
+<div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+<div class="main">
+    
+    <div class="category-header">
+        <div class="category-icon">🛠️</div>
+        <div>
+            <div style="font-weight: 700; color: var(--accent);">Plumber</div>
+            <div style="font-size: 12px; color: #64748b;">கடலூர் மற்றும் சுற்றுவட்டார பகுதிகள்</div>
+        </div>
+    </div>
+
+
+    <div class="worker-card">
+        <div class="worker-info">
+            <span class="worker-name">Kumar (குமார்)</span>
+            <span class="worker-location">📍 Semmandalam, Cuddalore</span>
+            <span class="experience">10 Years Exp</span>
+        </div>
+        <a href="tel:+919876543210" class="call-btn">📞</a>
+    </div>
+
+    <div class="worker-card">
+        <div class="worker-info">
+            <span class="worker-name">Rajesh (ராஜேஷ்)</span>
+            <span class="worker-location">📍 Manjakuppam, Cuddalore</span>
+            <span class="experience">5 Years Exp</span>
+        </div>
+        <a href="tel:+919876543211" class="call-btn">📞</a>
+    </div>
+
+    <div class="worker-card">
+        <div class="worker-info">
+            <span class="worker-name">Senthil (செந்தில்)</span>
+            <span class="worker-location">📍 Old Town, Cuddalore</span>
+            <span class="experience">8 Years Exp</span>
+        </div>
+        <a href="tel:+919876543212" class="call-btn">📞</a>
+    </div>
+    
+    <div class="worker-card">
+        <div class="worker-info">
+            <span class="worker-name">Senthil (செந்தில்)</span>
+            <span class="worker-location">📍 Old Town, Cuddalore</span>
+            <span class="experience">8 Years Exp</span>
+        </div>
+        <a href="tel:+919876543212" class="call-btn">📞</a>
+    </div>
+
+    <div class="worker-card">
+        <div class="worker-info">
+            <span class="worker-name">Senthil (செந்தில்)</span>
+            <span class="worker-location">📍 Old Town, Cuddalore</span>
+            <span class="experience">8 Years Exp</span>
+        </div>
+        <a href="tel:+919876543212" class="call-btn">📞</a>
+    </div>
+
+
+
+</div>
+
+
+
+
+<div class="bottom-nav">
+    <div class="nav-btn" onclick="location.href='index.html'">
+        <span>🏠</span>Home
+    </div>
+    <div class="nav-btn active" onclick="location.href='contact.html'">
+        <span>📞</span>Contact
+    </div>
+        <div class="nav-btn" onclick="location.href='places.html'"><span>🏖️</span>Places</div>
+    <div class="nav-btn" onclick="location.href='web.html'">
+        <span>🌐</span>Website
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("sidebar").classList.toggle("open");
+        document.getElementById("overlay").classList.toggle("show");
+    }
+</script>
+
+</body>
+</html>
